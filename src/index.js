@@ -1,25 +1,25 @@
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/styles.css';
-import WeatherService from './weather-service.js';
+import CurrencyExchange from './currency-exchange';
 
 // Business Logic
 
-function getWeather(city) {
-  WeatherService.getWeather(city)
+function getCurrency() {
+  CurrencyExchange.getCurrency(currency)
     .then(function(response) {
-      if (response.main) {
-        printElements(response, city);
+      if (response) {
+        printElements(response, currency);
       } else {
-        printError(response, city);
+        printError(response, currency);
       }
     });
 }
 
 // UI Logic
 
-function printElements(response, city) {
-  document.querySelector('#showResponse').innerText = `The humidity in ${city} is ${response.main.humidity}%.
+function printElements(response, currency) {
+  document.querySelector('#showResponse').innerText = `The currency is ${currency} and the exchange rate is ${response.}%.
   The temperature in Kelvins is ${response.main.temp} degrees.`;
 }
 
