@@ -6,7 +6,6 @@ export default class CurrencyExchange {
             const errorMessage = `${response.status} ${response.statusText}`;
             throw new Error(errorMessage);
           } else {
-            console.log(response);
             return response.json();
           }
         })      

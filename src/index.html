@@ -8,6 +8,16 @@
     <form>
       <label for="dollar-amount">Enter a dollar amount:</label>
       <input id="dollar-amount" type="text" name="dollar-amount">
+        <br>
+        <br>
+        <p>Select Foreign Currency:</p>
+      <select name="foreign-currency" id="select-foreign-currency">
+        <option value="euros">Euros</option>
+        <option value="pesos">Pesos</option>
+        <option value="yen">Yen</option>
+        <option value="won">Won</option>
+        <option value="rubles">Rubles</option>
+      </select>
       <button type="submit" id="submit-dollars">Get Currency Exchanged</button>
     </form>
     <p id="show-response"></p>
