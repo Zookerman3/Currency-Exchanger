@@ -42,6 +42,8 @@ function printElements(response) {
         exchangedCurrencyValue = Math.round((won * dollarAmount) * 100) / 100;
     } else if (foreignCurrency === "RUB") {
         exchangedCurrencyValue = Math.round((rubles * dollarAmount) * 100) / 100;
+    } else foreignCurrency = null; {
+        printError();
     }
 
 
@@ -51,8 +53,7 @@ function printElements(response) {
 }
 
 function printError(error) {
-    document.querySelector('#show-response').innerText = `There was an error accessing the weather data for ${error}: 
-  ${error}.`;
+    document.querySelector('#show-response').innerText = `There was an error accessing exchange data ${error}`;
 }
 
 function handleFormSubmission(event) {
