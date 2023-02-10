@@ -6,33 +6,33 @@ import CurrencyExchange from './currency-exchange';
 // Business Logic
 
 function getCurrency() {
-  CurrencyExchange.getCurrency(currency)
+  CurrencyExchange.getCurrency()
     .then(function(response) {
       if (response) {
-        printElements(response, currency);
+        printElements(response);
       } else {
-        printError(response, currency);
+        printError(response);
       }
     });
 }
 
 // UI Logic
 
-function printElements(response, currency) {
-  document.querySelector('#showResponse').innerText = `The currency is ${currency} and the exchange rate is ${response.}%.
-  The temperature in Kelvins is ${response.main.temp} degrees.`;
+function printElements(response) {
+  document.querySelector('#show-response').innerText = `The currency is USD and the exchange to is ${response.result}.`;
 }
 
 function printError(error, city) {
-  document.querySelector('#showResponse').innerText = `There was an error accessing the weather data for ${city}: 
+  document.querySelector('#show-response').innerText = `There was an error accessing the weather data for ${city}: 
   ${error}.`;
 }
 
 function handleFormSubmission(event) {
   event.preventDefault();
-  const city = document.querySelector('#location').value;
-  document.querySelector('#location').value = null;
-  getWeather(city);
+  const dollarAmount = document.querySelector('#dollar-amount').value;
+  console.log(dollarAmount);
+  document.querySelector('#dollar-amount').value = null;
+  getCurrency();
 }
 
 window.addEventListener("load", function() {
