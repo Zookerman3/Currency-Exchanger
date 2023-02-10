@@ -6,14 +6,14 @@ import CurrencyExchange from './currency-exchange';
 // Business Logic
 
 function getCurrency() {
-  CurrencyExchange.getCurrency()
-    .then(function(response) {
-      if (response) {
-        printElements(response);
-      } else {
-        printError(response);
-      }
-    });
+    CurrencyExchange.getCurrency()
+        .then(function (response) {
+            if (response) {
+                printElements(response);
+            } else {
+                printError(response);
+            }
+        });
 }
 
 // UI Logic
@@ -29,29 +29,38 @@ function printElements(response) {
     let won = response.conversion_rates.KRW;
     let rubles = response.conversion_rates.RUB;
 
+    // calculating exchange and rounding to the nearest hundredth
+    let exchangedCurrencyValue;
     let foreignCurrency = document.getElementById("select-foreign-currency").value;
-
-    
+    if (foreignCurrency === "EUR") {
+        exchangedCurrencyValue = Math.round((euro * dollarAmount) * 100) / 100;
+    } else if (foreignCurrency === "MXN") {
+        exchangedCurrencyValue = Math.round((peso * dollarAmount) * 100) / 100;
+    } else if (foreignCurrency === "JPY") {
+        exchangedCurrencyValue = Math.round((yen * dollarAmount) * 100) / 100;
+    } else if (foreignCurrency === "KRW") {
+        exchangedCurrencyValue = Math.round((won * dollarAmount) * 100) / 100;
+    } else if (foreignCurrency === "RUB") {
+        exchangedCurrencyValue = Math.round((rubles * dollarAmount) * 100) / 100;
+    }
 
 
     //printing results
-  document.querySelector('#show-response').innerText = `The currency is USD and the exchange to is ${response.conversion_rates.AED}.`;
+    document.querySelector('#show-response').innerText = "From USD to " + foreignCurrency + " and the amount in " + foreignCurrency + " is: " + exchangedCurrencyValue;
 
 }
 
 function printError(error) {
-  document.querySelector('#show-response').innerText = `There was an error accessing the weather data for ${error}: 
+    document.querySelector('#show-response').innerText = `There was an error accessing the weather data for ${error}: 
   ${error}.`;
 }
 
 function handleFormSubmission(event) {
-  event.preventDefault();
-  const dollarAmount = document.querySelector('#dollar-amount').value;
-  console.log(dollarAmount);
-  document.querySelector('#dollar-amount').value = null;
-  getCurrency();
+    event.preventDefault();
+
+    getCurrency();
 }
 
-window.addEventListener("load", function() {
-  document.querySelector('form').addEventListener("submit", handleFormSubmission);
+window.addEventListener("load", function () {
+    document.querySelector('form').addEventListener("submit", handleFormSubmission);
 });
