@@ -13,6 +13,9 @@ function getCurrency() {
             } else {
                 printError(response);
             }
+        })
+        .catch(function (error) {
+            printError(error);
         });
 }
 
