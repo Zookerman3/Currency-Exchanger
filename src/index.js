@@ -26,6 +26,7 @@ function printElements(response) {
     const dollarAmount = document.querySelector('#dollar-amount').value;
 
     //setting exchange rates to variables
+    
     let euro = response.conversion_rates.EUR;
     let peso = response.conversion_rates.MXN;
     let yen = response.conversion_rates.JPY;
@@ -61,7 +62,6 @@ function printError(error) {
 
 function handleFormSubmission(event) {
     event.preventDefault();
-
     getCurrency();
 }
 
