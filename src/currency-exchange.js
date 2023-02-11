@@ -11,7 +11,7 @@ export default class CurrencyExchange {
             })
             .catch(function (error) {
                 const errorText = document.getElementById("show-response");
-                errorText.innerHTML = error.message
+                errorText.innerHTML = error.message;
                 return error;
             });
     }
