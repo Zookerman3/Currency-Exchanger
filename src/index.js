@@ -24,11 +24,11 @@ function getCurrency() {
 function printElements(response) {
     //getting dollar ammount
     const dollarAmount = document.querySelector('#dollar-amount').value;
-    
+
     let exchangedCurrencyValue;
     let foreignCurrency = document.getElementById("select-foreign-currency").value;
     if (foreignCurrency !== null) {
-        exchangedCurrencyValue = Math.round((response.conversion_rates[foreignCurrency] * dollarAmount) * 100) / 100
+        exchangedCurrencyValue = Math.round((response.conversion_rates[foreignCurrency] * dollarAmount) * 100) / 100;
     } else {
         printError();
     }
