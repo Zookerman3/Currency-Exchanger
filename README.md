@@ -15,6 +15,9 @@
 
 ## Setup/Installation Requirements
 
+* Get an API Key from https://www.exchangerate-api.com/
+* create an .env in the main directory
+* set you API KEY in the .env using this syntax <API_KEY> = <Your-API-Key-Here>
 * Installing all packages with $ npm install.
 * Building the project using webpack with $ npm run build
 * Starting a development server with $ npm run start

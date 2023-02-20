@@ -24,29 +24,12 @@ function getCurrency() {
 function printElements(response) {
     //getting dollar ammount
     const dollarAmount = document.querySelector('#dollar-amount').value;
-
-    //setting exchange rates to variables
     
-    let euro = response.conversion_rates.EUR;
-    let peso = response.conversion_rates.MXN;
-    let yen = response.conversion_rates.JPY;
-    let won = response.conversion_rates.KRW;
-    let rubles = response.conversion_rates.RUB;
-
-    // calculating exchange and rounding to the nearest hundredth
     let exchangedCurrencyValue;
     let foreignCurrency = document.getElementById("select-foreign-currency").value;
-    if (foreignCurrency === "EUR") {
-        exchangedCurrencyValue = Math.round((euro * dollarAmount) * 100) / 100;
-    } else if (foreignCurrency === "MXN") {
-        exchangedCurrencyValue = Math.round((peso * dollarAmount) * 100) / 100;
-    } else if (foreignCurrency === "JPY") {
-        exchangedCurrencyValue = Math.round((yen * dollarAmount) * 100) / 100;
-    } else if (foreignCurrency === "KRW") {
-        exchangedCurrencyValue = Math.round((won * dollarAmount) * 100) / 100;
-    } else if (foreignCurrency === "RUB") {
-        exchangedCurrencyValue = Math.round((rubles * dollarAmount) * 100) / 100;
-    } else foreignCurrency = null; {
+    if (foreignCurrency !== null) {
+        exchangedCurrencyValue = Math.round((response.conversion_rates[foreignCurrency] * dollarAmount) * 100) / 100
+    } else {
         printError();
     }
 
